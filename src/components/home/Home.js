@@ -1,6 +1,9 @@
 import React, {
     Component
 } from 'react';
+import {
+  Route
+} from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './Home.css';
@@ -34,7 +37,7 @@ class Home extends Component {
                         this.state.issues.map((issue, index) => {
                             return (
                                 <li key={index}>
-                                    <h4><Link to={'/browse/' + issue.id}>{issue.id} {issue.summary}</Link></h4>
+                                    <h4><Link to={'browse/' + issue.id}>{issue.id} {issue.summary}</Link></h4>
                                 </li>
                             );
                         })
