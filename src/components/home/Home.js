@@ -1,6 +1,7 @@
 import React, {
     Component
 } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './Home.css';
 
@@ -9,16 +10,17 @@ class Home extends Component {
         super(props);
 
         this.state = {
-            posts: []
+            issues: []
         };
     }
 
     componentDidMount() {
-        axios.get('https://api.myjson.com/bins/8phdd')
+        axios.get('https://api.myjson.com/bins/p3rdd')
             .then(res => {
-                const posts = res.data['Task-details'];
+                const ISSUES = res.data['issues'];
+                console.log('ISSUES >> ', ISSUES);
                 this.setState({
-                    posts
+                    issues: ISSUES
                 });
             });
     }
@@ -26,12 +28,17 @@ class Home extends Component {
     render() {
         return (
             <div className='home-component'>
-                <h2> Basic Task fields </h2>
+                <h1>Open issues</h1>
                 <ul>
-                {
-                    this.state.posts.map((post, index) =>
-                    <li key={index}>{post}</li>)
-                }
+                    {
+                        this.state.issues.map((issue, index) => {
+                            return (
+                                <li key={index}>
+                                    <h4><Link to={'/browse/' + issue.id}>{issue.id} {issue.summary}</Link></h4>
+                                </li>
+                            );
+                        })
+                    }
                 </ul>
             </div>
         );
@@ -39,3 +46,23 @@ class Home extends Component {
 }
 
 export default Home;
+
+
+// <hr/>
+
+// <h4>Details</h4>
+// <div>Type: {issue.type}</div>
+// <div>Priority: {issue.priority}</div>
+// <div>Sprint: {issue.sprint}</div>
+// <hr/>
+//
+// <h4>Description</h4>
+// <span>{issue.description}</span>
+// <hr/>
+//
+// <h4>Attachments</h4>
+// <span>Coming soon...</span>
+// <hr/>
+//
+// <h4>Activity</h4>
+// <span>Coming soon...</span>

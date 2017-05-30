@@ -11,7 +11,7 @@ const Header = () => (
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <span className="navbar-brand">JIRA App</span>
+            <span className="navbar-brand">BeFit</span>
           </div>
         <div id="navbar" className="collapse navbar-collapse">
           <ul className="nav navbar-nav">
