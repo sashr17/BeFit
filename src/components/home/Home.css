@@ -1,0 +1,8 @@
+.home-component ul {
+    /*padding: 0;*/
+}
+
+.home-component ul li {
+    list-style-type: no;
+    text-align: left;
+}
