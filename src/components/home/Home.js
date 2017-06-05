@@ -7,6 +7,7 @@ import {
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './Home.css';
+import $ from 'jquery';
 
 class Home extends Component {
     constructor(props) {
@@ -17,7 +18,7 @@ class Home extends Component {
         };
     }
 
-    componentDidMount() {
+    componentDidMount () {
         axios.get('https://api.myjson.com/bins/p3rdd')
             .then(res => {
                 const ISSUES = res.data['issues'];
@@ -25,7 +26,34 @@ class Home extends Component {
                 this.setState({
                     issues: ISSUES
                 });
+                $('.icon-right-arrow').show();
             });
+    }
+
+    displayContent (evt) {
+        console.log('Here', evt);
+        const CONTEXT = evt.currentTarget;
+
+        $('.panel-body').slideUp();
+        $('.icon-down-arrow').hide();
+        $('.icon-right-arrow').show();
+
+        $(CONTEXT).hide();
+        $(CONTEXT).siblings('.icon-down-arrow').show();
+        $(CONTEXT).siblings('.panel-body').slideDown();
+    }
+
+    hideContent (evt) {
+        console.log('Here', evt);
+        const CONTEXT = evt.currentTarget;
+
+        $('.panel-body').slideUp();
+        $('.icon-down-arrow').hide();
+        $('.icon-right-arrow').show();
+
+        $(CONTEXT).hide();
+        $(CONTEXT).siblings('.icon-right-arrow').show();
+        $(CONTEXT).siblings('.panel-body').slideUp();
     }
 
     render() {
@@ -36,9 +64,33 @@ class Home extends Component {
                     {
                         this.state.issues.map((issue, index) => {
                             return (
-                                <li key={index}>
-                                    <h4><Link to={'browse/' + issue.id}>{issue.id} {issue.summary}</Link></h4>
-                                </li>
+                                <div key={index} className="panel panel-default issue-panel">
+                                  <div className="panel-heading">
+                                      <li>
+                                          <h4>{issue.id} {issue.summary}</h4>
+                                      </li>
+                                  </div>
+                                  <div className="panel-body">
+                                      <h4>Details</h4>
+                                      <div>Type: {issue.type}</div>
+                                      <div>Priority: {issue.priority}</div>
+                                      <div>Sprint: {issue.sprint}</div>
+                                      <hr/>
+
+                                      <h4>Description</h4>
+                                      <span>{issue.description}</span>
+                                      <hr/>
+
+                                      <h4>Attachments</h4>
+                                      <span>Coming soon...</span>
+                                      <hr/>
+
+                                      <h4>Activity</h4>
+                                      <span>Coming soon...</span>
+                                  </div>
+                                  <span className="fa fa-caret-right icon-arrows icon-right-arrow" aria-hidden="true" onClick={this.displayContent}></span>
+                                  <span className="fa fa-caret-down icon-arrows icon-down-arrow" aria-hidden="true" onClick={this.hideContent}></span>
+                                </div>
                             );
                         })
                     }

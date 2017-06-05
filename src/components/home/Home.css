@@ -1,8 +1,46 @@
+.home-component {
+    width: 50%;
+    margin: 0 auto;
+}
+
 .home-component ul {
-    /*padding: 0;*/
+    padding: 0;
 }
 
 .home-component ul li {
-    list-style-type: no;
+    list-style-type: none;
     text-align: left;
+}
+
+.home-component ul li a {
+    text-decoration: none;
+}
+
+.home-component .issue-panel {
+    margin-bottom: 1px;
+    position: relative;
+}
+
+.home-component .issue-panel .panel-heading {
+    padding: 7px 7px 7px 20px;
+}
+
+.home-component .issue-panel .panel-body {
+    display: none;
+}
+
+.home-component .issue-panel .icon-arrows {
+    position: absolute;
+    top: 17px;
+    left: 7px;
+    display: none;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+@media screen and (max-width: 768px)  {
+    .home-component {
+        width: 98%;
+        margin: 0 auto;
+    }
 }
