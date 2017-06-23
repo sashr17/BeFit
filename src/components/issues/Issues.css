@@ -22,7 +22,7 @@ li h4 {
 
 .issues-component .loader {
     position: absolute;
-    background: url(../../images/loader.gif) no-repeat;
+    background: url(../../loader.gif) no-repeat;
     background-size: contain;
     width: 35px;
     height: 35px;
