@@ -7,7 +7,7 @@ import './App.css';
 import Header from './header/Header';
 import Home from './home/Home';
 import About from './about/About';
-import Footer from './footer/Footer';
+import IssueDetails from './issue-details/IssueDetails';
 import createBrowserHistory from 'history/createBrowserHistory'
 
 const history = createBrowserHistory();
@@ -19,14 +19,11 @@ class App extends Component {
         <Router history={history}>
             <div>
               <Header/>
-
               <div className='container-fluid route-content'>
                   <Route exact path="/" component={Home}/>
                   <Route path="/home" component={Home}/>
-                  <Route path="/about" component={About}/>
+                  <Route path="/issue/:id" component={IssueDetails}/>
               </div>
-
-
             </div>
         </Router>
 

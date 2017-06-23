@@ -1,0 +1,15 @@
+nav.header-nav {
+    border-radius: 0;
+}
+
+.logo-link {
+    color: #FFF;
+}
+
+.logo-link:link,
+.logo-link:visited,
+.logo-link:hover,
+.logo-link:active {
+    color: #FFF;
+    text-decoration: none;
+}
