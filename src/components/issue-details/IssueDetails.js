@@ -26,7 +26,6 @@ class IssueDetails extends Component {
     }
 
     render () {
-        console.log('State', this.state);
         return (
             <div className='issue-details-container'>
                 <div className='open-issues-link'>
@@ -39,26 +38,43 @@ class IssueDetails extends Component {
                     this.state.issue.map((issue, index) => {
                         return (
                         <div key={index} className="panel panel-default issue-detail-panel">
-                            <div className="panel-heading">
+                            <div className="panel-heading issue-detail-heading">
                                 <h4>{issue.id} {issue.summary}</h4>
                             </div>
-                            <div className="panel-body">
-                                <h4>Details</h4>
-                                <div>Type: {issue.type}</div>
-                                <div>Priority: {issue.priority}</div>
-                                <div>Sprint: {issue.sprint}</div>
-                                <hr/>
+                            <div className="panel-body issue-details">
 
-                                <h4>Description</h4>
-                                <span>{issue.description}</span>
-                                <hr/>
+                                <div className='details-wrapper'>
+                                    <h5>Details</h5>
+                                    <div className='details-row-1 row'>
+                                        <div className='col-xs-12 col-sm-4 col-md-4'>
+                                            <label className='issue-label'>Type:</label>
+                                            <span> {issue.type}</span>
+                                        </div>
+                                        <div className='col-xs-12 col-sm-4 col-md-4'>
+                                            <label className='issue-label'>Priority:</label>
+                                            <span> {issue.priority}</span>
+                                        </div>
+                                        <div className='col-xs-12 col-sm-4 col-md-4'>
+                                            <label className='issue-label'>Sprint:</label>
+                                            <span> {issue.sprint}</span>
+                                        </div>
+                                    </div>
+                                    <div className='details-row-2 row'>
+                                        <div className='col-xs-12 col-sm-4 col-md-4'>
+                                            <label className='issue-label'>Component:</label>
+                                            <span> {issue.component}</span>
+                                        </div>
+                                        <div className='col-xs-12 col-sm-4 col-md-4'>
+                                            <label className='issue-label'>Status:</label>
+                                            <span> {issue.status}</span>
+                                        </div>
+                                    </div>
+                                </div>
 
-                                <h4>Attachments</h4>
-                                <span>Coming soon...</span>
-                                <hr/>
-
-                                <h4>Activity</h4>
-                                <span>Coming soon...</span>
+                                <div className='description-wrapper'>
+                                    <h5>Description</h5>
+                                    <span>{issue.description}</span>
+                                </div>
                             </div>
                         </div>
                     )})

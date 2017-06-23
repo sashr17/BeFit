@@ -6,7 +6,7 @@ import axios from 'axios';
 import Issue from '../issue/Issue';
 import './Issues.css';
 
-const ISSUES_API = 'https://api.myjson.com/bins/p3rdd';
+const ISSUES_API = 'https://api.myjson.com/bins/13oy8v';
 
 class Issues extends Component {
     constructor(props) {

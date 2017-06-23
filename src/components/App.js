@@ -6,7 +6,6 @@ import {
 import './App.css';
 import Header from './header/Header';
 import Home from './home/Home';
-import About from './about/About';
 import IssueDetails from './issue-details/IssueDetails';
 import createBrowserHistory from 'history/createBrowserHistory'
 

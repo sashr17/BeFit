@@ -7,3 +7,22 @@
     width: 90%;
     margin: 10px auto;
 }
+
+.issue-details h5 {
+    border-bottom: 1px solid #CCC;
+}
+
+.issue-details .issue-label {
+    color: #707070;
+    font-style: italic;
+    font-weight: normal;
+}
+
+.issue-detail-heading h3 {
+    margin: 5px 0;
+}
+
+.details-wrapper h5,
+.description-wrapper h5 {
+    font-weight: bold;
+}
