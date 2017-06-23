@@ -15,3 +15,17 @@ li:last-child {
 li h4 {
     margin: 0;
 }
+
+.issues-component {
+    position: relative;
+}
+
+.issues-component .loader {
+    position: absolute;
+    background: url(../../images/loader.gif) no-repeat;
+    background-size: contain;
+    width: 35px;
+    height: 35px;
+    top: 40px;
+    left: 45%;
+}

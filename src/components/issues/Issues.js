@@ -7,13 +7,18 @@ import Issue from '../issue/Issue';
 import './Issues.css';
 
 const ISSUES_API = 'https://api.myjson.com/bins/13oy8v';
+const lOADER_TPL = (
+  <div className="loader" key="loader"></div>
+);
 
 class Issues extends Component {
     constructor(props) {
         super(props);
 
+        this.loading = true;
         this.state = {
-            issues: []
+            issues: [],
+            loading: true
         };
     }
 
@@ -24,15 +29,17 @@ class Issues extends Component {
                 localStorage.setItem('open_issues', JSON.stringify(ISSUES));
                 console.log('ISSUES >> ', ISSUES);
                 this.setState({
-                    issues: ISSUES
+                    issues: ISSUES,
+                    loading: false
                 });
             });
     }
 
-    render () {
-        return (
-            <div className='issues-component'>
-                <h3>Open issues</h3>
+    getTemplate () {
+        if (this.state.loading) {
+            return (lOADER_TPL);
+        } else {
+            return (
                 <ul>
                     {
                         this.state.issues.map((issue, index) => {
@@ -46,6 +53,17 @@ class Issues extends Component {
                         })
                     }
                 </ul>
+            );
+        }
+    }
+
+    render () {
+        return (
+            <div className='issues-component'>
+                <h3>Open issues</h3>
+                {
+                    this.getTemplate()
+                }
             </div>
         );
     }
