@@ -6,7 +6,7 @@ const Header = () => (
     <nav className="navbar navbar-inverse header-nav">
       <div className="container">
           <div className="navbar-header">
-            <span className="navbar-brand">
+            <span className="navbar-brand logo-container">
                 <Link to="/" className='logo-link'>BeFit</Link>
             </span>
           </div>

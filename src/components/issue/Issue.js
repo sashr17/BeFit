@@ -6,7 +6,6 @@ import './Issue.css';
 class Issue extends Component {
     constructor(props) {
         super(props);
-
         this.issue = this.props.issue;
     }
 

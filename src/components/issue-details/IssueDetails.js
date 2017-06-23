@@ -30,7 +30,10 @@ class IssueDetails extends Component {
         return (
             <div className='issue-details-container'>
                 <div className='open-issues-link'>
-                    <Link to='/'>Back to Open issues</Link>
+                    <Link to='/'>
+                        <span className="fa fa-angle-double-left" aria-hidden="true"></span>
+                        <span> Open issues</span>
+                    </Link>
                 </div>
                 {
                     this.state.issue.map((issue, index) => {

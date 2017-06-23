@@ -1,5 +1,11 @@
 nav.header-nav {
     border-radius: 0;
+    height: 40px;
+    min-height: 0;
+}
+
+.logo-container {
+    padding: 10px 15px;
 }
 
 .logo-link {
