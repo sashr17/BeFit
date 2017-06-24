@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+
+import { Loader } from '../shared/SharedComponents';
 import Issue from '../issue/Issue';
 import './Issues.css';
 
 const ISSUES_API = 'https://api.myjson.com/bins/13oy8v';
-const Loader = () => {
-    return (
-        <div className="loader" key="loader"></div>
-    );
-}
 
 class Issues extends Component {
     constructor(props) {

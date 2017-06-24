@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+
+import { BackLink } from '../shared/SharedComponents';
 import './IssueDetails.css';
 
 class IssueDetails extends Component {
@@ -27,10 +29,7 @@ class IssueDetails extends Component {
         return (
             <div className='issue-details-container'>
                 <div className='open-issues-link'>
-                    <Link to='/'>
-                        <span className="fa fa-angle-double-left" aria-hidden="true"></span>
-                        <span> Open issues</span>
-                    </Link>
+                    <BackLink href='/' label='Open Issues'/>
                 </div>
                 {
                     this.state.issue.map((issue, index) => {
