@@ -7,7 +7,22 @@
 .issues-nav-links .next-link,
 .issues-nav-links .prev-link {
     float: right;
-    padding: 0 5px;
+    padding: 0 10px;
+}
+
+.issues-nav-links .next-link {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.issues-nav-links .prev-link {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.issues-nav-links .next-link span,
+.issues-nav-links .prev-link span {
+    font-size: 20px;
 }
 
 .issue-detail-panel {

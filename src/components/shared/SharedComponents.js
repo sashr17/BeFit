@@ -16,20 +16,22 @@ const BackLink = ({href, label}) => {
     );
 };
 
-const NextLink = ({href}) => {
+const NextLink = ({href, linkStatus}) => {
     return (
-        <Link className='next-link' to={href}>
-            <span>Next </span>
+        <Link className={linkStatus ? 'next-link btn btn-default' : 'next-link btn btn-default disabled'}
+              to={href}
+              title='Next Issue'>
             <span className="fa fa-angle-right" aria-hidden="true"></span>
         </Link>
     );
 };
 
-const PrevLink = ({href}) => {
+const PrevLink = ({href, linkStatus}) => {
     return (
-        <Link className='prev-link' to={href}>
+        <Link className={linkStatus ? 'prev-link btn btn-default' : 'prev-link btn btn-default disabled'}
+              to={href}
+              title='Previous Issue'>
             <span className="fa fa-angle-left" aria-hidden="true"></span>
-            <span> Previous</span>
         </Link>
     );
 };

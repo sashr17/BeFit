@@ -3,28 +3,35 @@ import React, { Component } from 'react';
 import { BackLink, NextLink, PrevLink } from '../shared/SharedComponents';
 import './IssueDetails.css';
 
+const ISSUES = JSON.parse(localStorage.getItem('open_issues')) || [];
+
 class IssueDetails extends Component {
     constructor(props) {
         super(props);
         this.issueId = props.match.params.id;
         this.state = {
-            issue: []
+            issue: {},
+            issueIndex: 0,
+            totalIssues: 0
         };
     }
 
     componentDidMount () {
-        const ISSUES = JSON.parse(localStorage.getItem('open_issues')) || [];
-        let self = this;
-        let issue = ISSUES.filter(function(issue, index) {
-            return self.issueId === issue.id;
+        let issueObj = this.extractIssue(ISSUES, this.issueId);
+        this.setState({
+            issue: issueObj.issue,
+            issueIndex: issueObj.index,
+            totalIssues: ISSUES.length
         });
-        // let issueObj = this.extractIssue(ISSUES, this.issueId);
-        //
-        //
-        // console.log('Issue >> ', issueObj);
+    }
 
-        self.setState({
-            issue: issue
+    componentWillReceiveProps(nextProps: props) {
+        this.issueId = nextProps.match.params.id;
+        let issueObj = this.extractIssue(ISSUES, this.issueId);
+        this.setState({
+            issue: issueObj.issue,
+            issueIndex: issueObj.index,
+            totalIssues: ISSUES.length
         });
     }
 
@@ -40,62 +47,118 @@ class IssueDetails extends Component {
         return false;
     };
 
+    prevIssue (issues, index) {
+        if (index > 0) {
+            return '/issue/' + issues[index - 1]['id']
+        }
+        return '';
+    }
+
+    nextIssue (issues, index) {
+        if (index < issues.length - 1) {
+            return '/issue/' + issues[index + 1]['id']
+        }
+        return '';
+    }
+
     render () {
         return (
             <div className='issue-details-container'>
                 <div className='issues-nav-links'>
                     <BackLink href='/' label='Open Issues'/>
-                    <NextLink href='/' />
-                    <PrevLink href='/' />
+                    <NextLink href={ this.nextIssue(ISSUES, this.state.issueIndex) }
+                              linkStatus={this.state.issueIndex < this.state.totalIssues - 1 }/>
+                    <PrevLink href={ this.prevIssue(ISSUES, this.state.issueIndex) }
+                              linkStatus={this.state.issueIndex > 0 }/>
                 </div>
-                {
-                    this.state.issue.map((issue, index) => {
-                        return (
-                        <div key={index} className="panel panel-default issue-detail-panel">
+                    <div className="panel panel-default issue-detail-panel">
                             <div className="panel-heading issue-detail-heading">
-                                <h4>{issue.id} {issue.summary}</h4>
+                                <h4>{this.state.issue.id} {this.state.issue.summary}</h4>
                             </div>
                             <div className="panel-body issue-details">
-
                                 <div className='details-wrapper'>
                                     <h5>Details</h5>
                                     <div className='details-row-1 row'>
                                         <div className='col-xs-12 col-sm-4 col-md-4'>
                                             <label className='issue-label'>Type:</label>
-                                            <span> {issue.type}</span>
+                                            <span> {this.state.issue.type}</span>
                                         </div>
                                         <div className='col-xs-12 col-sm-4 col-md-4'>
                                             <label className='issue-label'>Priority:</label>
-                                            <span> {issue.priority}</span>
+                                            <span> {this.state.issue.priority}</span>
                                         </div>
                                         <div className='col-xs-12 col-sm-4 col-md-4'>
                                             <label className='issue-label'>Sprint:</label>
-                                            <span> {issue.sprint}</span>
+                                            <span> {this.state.issue.sprint}</span>
                                         </div>
                                     </div>
                                     <div className='details-row-2 row'>
                                         <div className='col-xs-12 col-sm-4 col-md-4'>
                                             <label className='issue-label'>Component:</label>
-                                            <span> {issue.component}</span>
+                                            <span> {this.state.issue.component}</span>
                                         </div>
                                         <div className='col-xs-12 col-sm-4 col-md-4'>
                                             <label className='issue-label'>Status:</label>
-                                            <span> {issue.status}</span>
+                                            <span> {this.state.issue.status}</span>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div className='description-wrapper'>
                                     <h5>Description</h5>
-                                    <span>{issue.description}</span>
+                                    <span>{this.state.issue.description}</span>
                                 </div>
                             </div>
                         </div>
-                    )})
-                }
             </div>
         );
     }
 }
 
 export default IssueDetails;
+
+// {
+//     this.state.issue.map((issue, index) => {
+//         return (
+//         <div key={index} className="panel panel-default issue-detail-panel">
+//             <div className="panel-heading issue-detail-heading">
+//                 <h4>{issue.id} {issue.summary}</h4>
+//             </div>
+//             <div className="panel-body issue-details">
+//
+//                 <div className='details-wrapper'>
+//                     <h5>Details</h5>
+//                     <div className='details-row-1 row'>
+//                         <div className='col-xs-12 col-sm-4 col-md-4'>
+//                             <label className='issue-label'>Type:</label>
+//                             <span> {issue.type}</span>
+//                         </div>
+//                         <div className='col-xs-12 col-sm-4 col-md-4'>
+//                             <label className='issue-label'>Priority:</label>
+//                             <span> {issue.priority}</span>
+//                         </div>
+//                         <div className='col-xs-12 col-sm-4 col-md-4'>
+//                             <label className='issue-label'>Sprint:</label>
+//                             <span> {issue.sprint}</span>
+//                         </div>
+//                     </div>
+//                     <div className='details-row-2 row'>
+//                         <div className='col-xs-12 col-sm-4 col-md-4'>
+//                             <label className='issue-label'>Component:</label>
+//                             <span> {issue.component}</span>
+//                         </div>
+//                         <div className='col-xs-12 col-sm-4 col-md-4'>
+//                             <label className='issue-label'>Status:</label>
+//                             <span> {issue.status}</span>
+//                         </div>
+//                     </div>
+//                 </div>
+//
+//                 <div className='description-wrapper'>
+//                     <h5>Description</h5>
+//                     <span>{issue.description}</span>
+//                 </div>
+//             </div>
+//         </div>
+//     )})
+// }
