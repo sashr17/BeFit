@@ -1,19 +1,10 @@
-import React, {
-    Component
-} from 'react';
+import React from 'react';
 import './Issue.css';
 
-class Issue extends Component {
-    constructor(props) {
-        super(props);
-        this.issue = this.props.issue;
-    }
+const Issue = ({issue}) => {
+    return (
+        <h4>{issue.id} {issue.summary}</h4>
+    );
+};
 
-    render () {
-        return (
-            <h4>{this.issue.id} {this.issue.summary}</h4>
-        );
-    }
- }
-
- export default Issue;
+export default Issue;

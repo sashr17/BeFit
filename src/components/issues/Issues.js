@@ -1,21 +1,20 @@
-import React, {
-    Component
-} from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Issue from '../issue/Issue';
 import './Issues.css';
 
 const ISSUES_API = 'https://api.myjson.com/bins/13oy8v';
-const lOADER_TPL = (
-  <div className="loader" key="loader"></div>
-);
+const Loader = () => {
+    return (
+        <div className="loader" key="loader"></div>
+    );
+}
 
 class Issues extends Component {
     constructor(props) {
         super(props);
 
-        this.loading = true;
         this.state = {
             issues: [],
             loading: true
@@ -37,7 +36,7 @@ class Issues extends Component {
 
     getTemplate () {
         if (this.state.loading) {
-            return (lOADER_TPL);
+            return <Loader/>;
         } else {
             return (
                 <ul>
@@ -61,9 +60,7 @@ class Issues extends Component {
         return (
             <div className='issues-component'>
                 <h3>Open issues</h3>
-                {
-                    this.getTemplate()
-                }
+                { this.getTemplate() }
             </div>
         );
     }
