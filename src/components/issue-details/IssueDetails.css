@@ -1,8 +1,15 @@
-.open-issues-link {
+.issues-nav-links {
     width: 90%;
     margin: 10px auto;
     text-align: left;
 }
+
+.issues-nav-links .next-link,
+.issues-nav-links .prev-link {
+    float: right;
+    padding: 0 5px;
+}
+
 .issue-detail-panel {
     width: 90%;
     margin: 10px auto;

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
-import { BackLink } from '../shared/SharedComponents';
+import { BackLink, NextLink, PrevLink } from '../shared/SharedComponents';
 import './IssueDetails.css';
 
 class IssueDetails extends Component {
@@ -16,20 +15,38 @@ class IssueDetails extends Component {
     componentDidMount () {
         const ISSUES = JSON.parse(localStorage.getItem('open_issues')) || [];
         let self = this;
-        let issue = ISSUES.filter(function(issue) {
+        let issue = ISSUES.filter(function(issue, index) {
             return self.issueId === issue.id;
         });
+        // let issueObj = this.extractIssue(ISSUES, this.issueId);
+        //
+        //
+        // console.log('Issue >> ', issueObj);
 
         self.setState({
             issue: issue
         });
     }
 
+    extractIssue (issues, issueId) {
+        for (let i = 0; i < issues.length; i++) {
+            if (issues[i]['id'] === issueId) {
+                return {
+                    issue: issues[i],
+                    index: i
+                }
+            }
+        }
+        return false;
+    };
+
     render () {
         return (
             <div className='issue-details-container'>
-                <div className='open-issues-link'>
+                <div className='issues-nav-links'>
                     <BackLink href='/' label='Open Issues'/>
+                    <NextLink href='/' />
+                    <PrevLink href='/' />
                 </div>
                 {
                     this.state.issue.map((issue, index) => {
