@@ -6,7 +6,7 @@ import { Loader } from '../shared/SharedComponents';
 import Issue from '../issue/Issue';
 import './Issues.css';
 
-const ISSUES_API = 'http://localhost:3001/api/issues';//'https://api.myjson.com/bins/13oy8v';
+const ISSUES_API = '//localhost:3001/api/issues';//'https://api.myjson.com/bins/13oy8v';
 
 class Issues extends Component {
     constructor(props) {
