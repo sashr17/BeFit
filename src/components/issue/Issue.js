@@ -3,7 +3,7 @@ import './Issue.css';
 
 const Issue = ({issue}) => {
     return (
-        <h4>{issue.id} {issue.summary}</h4>
+        <h4>{issue.project}-{issue.id} {issue.summary}</h4>
     );
 };
 

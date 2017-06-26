@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { BackLink, NextLink, PrevLink } from '../shared/SharedComponents';
 import './IssueDetails.css';
 
-const ISSUES = JSON.parse(localStorage.getItem('open_issues')) || [];
+const ISSUES = /*JSON.parse(localStorage.getItem('open_issues')) || */ [];
 
 class IssueDetails extends Component {
     constructor(props) {

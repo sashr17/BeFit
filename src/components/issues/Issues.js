@@ -6,7 +6,7 @@ import { Loader } from '../shared/SharedComponents';
 import Issue from '../issue/Issue';
 import './Issues.css';
 
-const ISSUES_API = 'https://api.myjson.com/bins/13oy8v';
+const ISSUES_API = 'http://localhost:3001/api/issues';//'https://api.myjson.com/bins/13oy8v';
 
 class Issues extends Component {
     constructor(props) {
@@ -21,8 +21,8 @@ class Issues extends Component {
     componentDidMount () {
         axios.get(ISSUES_API)
             .then(res => {
-                const ISSUES = res.data['issues'];
-                localStorage.setItem('open_issues', JSON.stringify(ISSUES));
+                const ISSUES = res.data;//res.data['issues'];
+                // localStorage.setItem('open_issues', JSON.stringify(ISSUES));
                 console.log('ISSUES >> ', ISSUES);
                 this.setState({
                     issues: ISSUES,
@@ -41,7 +41,7 @@ class Issues extends Component {
                         this.state.issues.map((issue, index) => {
                             return (
                                 <li key={index}>
-                                    <Link to={`/issue/${issue.id}`} key={index}>
+                                    <Link to={`/issue/${issue.project}-${issue.id}`} key={index}>
                                         <Issue issue={issue}/>
                                     </Link>
                                 </li>

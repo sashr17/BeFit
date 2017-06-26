@@ -52,6 +52,7 @@ router.route('/addissue')
     var issue = new Issue();
     //body parser lets us use the req.body
     issue.project = req.body.project;
+    issue.id = req.body.id;
     issue.summary = req.body.summary;
     issue.save(function(err) {
         if (err)
