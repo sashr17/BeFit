@@ -38,6 +38,71 @@
     font-size: 20px;
 }
 
+.home-component .storyItem .acceptance_criteria {
+    border-left-color: #ce4844;
+}
+
+.home-component .storyItem .functional_Dtl {
+    border-left-color: #1b809e;
+}
+
+.home-component .storyItem {
+    padding: 5px 10px;
+    margin: 15px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+}
+
+.home-component .storyItem .heading {
+    margin: -5px -10px 10px;
+    padding: 10px;
+    color: #fff;
+}   
+
+.home-component .storyItem.functional_Dtl {
+    border-color: #5cb85c;
+}
+.home-component .storyItem.functional_Dtl .heading {
+    background: #5cb85c;    
+}
+
+.home-component .storyItem.validation_rules {
+    border-color: #f0ad4e;
+}
+.home-component .storyItem.validation_rules .heading {
+    background: #f0ad4e;
+}
+
+.home-component .storyItem.acceptance_criteria {
+    border-color: #d9534f;
+}
+.home-component .storyItem.acceptance_criteria .heading {
+    background: #d9534f;
+}
+
+.home-component .list-group-item {
+    margin-bottom: 10px;
+}
+
+.home-component li.list-group-item:hover {
+    background-color: transparent;
+}
+
+.home-component div.storyItem > ul li {
+    border: none;
+    list-style-type: disc;
+    margin-left: 25px;
+}
+
+.home-component div.storyItem ul.secondaryList > li {
+    list-style-type: circle;
+}
+
+.home-component div.storyContainer > ul li {
+    margin-left: 0x;
+}    
+
 @media screen and (max-width: 768px)  {
     .home-component {
         width: 98%;

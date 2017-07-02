@@ -6,7 +6,7 @@ import { Loader } from '../shared/SharedComponents';
 import Issue from '../issue/Issue';
 import './Issues.css';
 
-const ISSUES_API = '//localhost:3001/api/issues';//'https://api.myjson.com/bins/13oy8v';
+const ISSUES_API = 'https://api.myjson.com/bins/13oy8v';//'//localhost:3001/api/issues';
 
 class Issues extends Component {
     constructor(props) {
@@ -21,7 +21,7 @@ class Issues extends Component {
     componentDidMount () {
         axios.get(ISSUES_API)
             .then(res => {
-                const ISSUES = res.data;//res.data['issues'];
+                const ISSUES = res.data['issues'];//res.data;
                 // localStorage.setItem('open_issues', JSON.stringify(ISSUES));
                 console.log('ISSUES >> ', ISSUES);
                 this.setState({
