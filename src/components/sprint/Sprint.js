@@ -16,7 +16,7 @@ class Sprint extends Component {
     }
 
     componentDidMount () {
-        axios.get('https://api.myjson.com/bins/misgr').then(res => {
+        axios.get('https://api.myjson.com/bins/fi6en').then(res => {
             const sprintDtl = res.data;
             console.log('Sprint >> ', sprintDtl);
             this.setState({

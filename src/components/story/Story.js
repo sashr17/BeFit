@@ -43,11 +43,11 @@ class Story extends Component {
                         <h4 className="media-heading">{this.state.story.name}</h4>
                         <div className="">Priority: {this.state.story.priority}</div>
                         <div className="caption">{this.state.story.desc}</div>
-                        <div className="pull-right">
-                            <span className="fa fa-caret-right icon-arrows icon-right-arrow" aria-hidden="true" onClick={this.displayContent}></span>
-                            <span className="fa fa-caret-down icon-arrows icon-down-arrow" aria-hidden="true" onClick={this.hideContent}></span>
+                        <div className="pull-right expander">
+                            <span className="fa fa-2x fa-caret-right icon-arrows icon-right-arrow" aria-hidden="true" onClick={this.displayContent}></span>
+                            <span className="fa fa-2x fa-caret-down icon-arrows icon-down-arrow" aria-hidden="true" onClick={this.hideContent}></span>
                         </div>
-                        <div className="storyDtlContainer">
+                        <div className="storyDtlContainer clearfix">
                             <div className="storyItem functional_Dtl">
                                 <h5 className="heading">Functional Details</h5>
                                 {(this.state.story.functional_Dtl.desc && this.state.story.functional_Dtl.desc.length > 0) ? (
@@ -57,32 +57,49 @@ class Story extends Component {
                                         )}
                                     </p>
                                 ) : ('')}
-
-                                <ul>Input Fields: 
-                                    {this.state.story.functional_Dtl.inputFields.map((item, i) =>
-                                    <li key={'fdi'+i}>{item.title}, Type: {item.desc}
-                                        {item.type == 'dropDownList' && item.listItems.length > 0 ? (
-                                            <ul className="secondaryList">
-                                                {item.listItems.map((list, index) =>
-                                                    <li key={'fddl'+index}>{list.desc}</li>
-                                                )}
-                                            </ul>
-                                        ) : ('')}
-
-                                    </li>
-                                    )}
-                                </ul>
-                            </div>
-                            <div className="storyItem validation_rules">
-                                <h5 className="heading">Validation Rules</h5>
-                                {(this.state.story.validation_rules && this.state.story.validation_rules.length > 0) ? (
-                                    <p> 
-                                        {this.state.story.validation_rules.map((list, i) =>
-                                            <span key={'vr'+i}>{list}</span>
+                                
+                                {(this.state.story.functional_Dtl.inputFields && this.state.story.functional_Dtl.inputFields.length > 0) ? 
+                                    (<ul>Input Fields: 
+                                        {this.state.story.functional_Dtl.inputFields.map((item, i) =>                                        
+                                            <li key={'fdi'+i}>{item.title}, Type: {item.desc}
+                                                {item.type == 'dropDownList' && item.listItems.length > 0 ? (
+                                                    <ul className="secondaryList">
+                                                        {item.listItems.map((list, index) =>
+                                                            <li key={'fddl'+index}>{list.desc}</li>
+                                                        )}
+                                                    </ul>
+                                                ) : ('')}
+                                            </li>
                                         )}
-                                    </p>
-                                ) : ('NA')}
+                                    </ul>) : ''}
                             </div>
+                            
+                            {this.state.story.validation_rules ? (
+                                <div className="storyItem validation_rules">
+                                    <h5 className="heading">Validation Rules</h5>
+                                    <ul> 
+                                        {(this.state.story.validation_rules.items && this.state.story.validation_rules.items.length > 0) ? (
+                                            this.state.story.validation_rules.items.map((item, i) =>
+                                                <li key={'vritems'+i}>
+                                                <span>
+                                                    Input Field: {item.title}, {item.isRequired ? 'Mandatory' : ''}, {item.desc}
+                                                </span>
+                                                </li>
+                                            )
+                                        ) : ('')}
+                                    </ul>
+                                    <ul> 
+                                        {(this.state.story.validation_rules.desc && this.state.story.validation_rules.desc.length > 0) ? (
+                                            this.state.story.validation_rules.desc.map((item, i) =>
+                                                <li key={'vrdesc'+i}>
+                                                    <span>{item}</span>
+                                                </li>
+                                            )
+                                        ) : ('')}
+                                    </ul>
+                                </div>
+                            ) : ('')}
+
                             <div className="storyItem acceptance_criteria">
                                 <h5 className="heading">{this.state.story.acceptance_criteria.title}</h5>
                                 <ul>

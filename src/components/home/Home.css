@@ -60,6 +60,10 @@
     color: #fff;
 }   
 
+.home-component .storyDtlContainer {
+    clear: both;
+}
+
 .home-component .storyItem.functional_Dtl {
     border-color: #5cb85c;
 }
@@ -101,7 +105,12 @@
 
 .home-component div.storyContainer > ul li {
     margin-left: 0x;
-}    
+}  
+
+.home-component .expander {
+    color: #337ab7;
+    text-align: right;
+}  
 
 @media screen and (max-width: 768px)  {
     .home-component {
